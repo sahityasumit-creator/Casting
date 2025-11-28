@@ -1,0 +1,28 @@
+name: Sync to Hugging Face Space
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitHub Repo
+        uses: actions/checkout@v3
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+
+          git remote add hf https://huggingface.co/spaces/sumitsahitya/Casting
+          git fetch hf
+
+          BRANCH=${GITHUB_REF#refs/heads/}
+          git checkout $BRANCH
+
+          git push --force hf $BRANCH:main
