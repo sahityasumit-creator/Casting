@@ -10,4 +10,5 @@ pinned: false
 
 # Casting AI – Smart PT/PTE Recommender
 Real-time AI assistant that reduces shrinkage & ceramic defects.
+
 Used daily by operators.
