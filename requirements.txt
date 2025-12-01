@@ -4,3 +4,5 @@ torch
 joblib
 scikit-learn
 pandas
+audioop-lts
+pydub
